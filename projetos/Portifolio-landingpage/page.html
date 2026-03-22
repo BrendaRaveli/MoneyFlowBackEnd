@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Portfólio • Brenda Raveli</title>
+  <meta name="description" content="Portfólio de Brenda Raveli — Full Stack Developer (.NET, Angular, AWS, C#, SQL, NoSQL).">
+  <style>
+    :root{
+      --ink:#1b1f24;
+      --muted:#6a7683;
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      --primary:#0a66c2;
+      --accent:#12c29a;
+      --border:#e6edf3;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+    a{color:var(--primary);text-decoration:none}
+    .wrap{max-width:1080px;margin:0 auto;padding:24px}
+    header{background:linear-gradient(135deg,#0a66c2 0%,#2563eb 60%);color:#fff}
+    .top{display:flex;align-items:center;gap:18px;padding:28px 24px;flex-wrap:wrap}
+    .avatar{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:#ffffff22;border:1px solid #ffffff44;color:#fff;font-weight:800;font-size:22px}
+    .id{flex:1;min-width:240px}
+    .id h1{margin:0;font-size:26px}
+    .id p{margin:4px 0 0;font-size:15px;opacity:.92}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:#fff;color:#0a2a55;font-weight:700}
+    .btn.alt{background:#ffffff22;color:#fff;border:1px solid #ffffff55}
+    main .section{padding:26px 0}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 1px 6px rgba(16,24,40,.06);padding:18px}
+    h2{margin:0 0 14px;font-size:22px}
+    .about p{margin:0;color:#2b2f36}
+    .chips{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{background:#e9f3ff;color:#0a2a55;border:1px solid #cfe0f5;border-radius:20px;padding:8px 12px;font-weight:700}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .proj h3{margin:0 0 6px;font-size:18px}
+    .proj p{margin:0 0 10px;color:var(--muted);font-size:14px}
+    .proj a{display:inline-flex;align-items:center;gap:6px;background:#0a66c2;color:#fff;padding:8px 12px;border-radius:8px;font-weight:700}
+    .contact{display:flex;gap:12px;flex-wrap:wrap}
+    .contact .btn{background:var(--accent);color:#053;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+    footer{padding:24px;text-align:center;color:#7b8794}
+    @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:600px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top wrap">
+      <div class="avatar" aria-hidden="true">BR</div>
+      <div class="id">
+        <h1>Brenda Raveli</h1>
+        <p>Full Stack Developer • .NET • Angular • AWS • C# • SQL • NoSQL • Metodologias ágeis • Brasília, DF</p>
+      </div>
+      <div class="actions">
+        <a class="btn" href="https://github.com/BrendaRaveli" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn alt" href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="section card about">
+      <h2>Sobre</h2>
+      <p>Desenvolvedora full stack com experiência em .NET, Angular, C#, SQL, NoSQL e AWS, criando aplicações escaláveis e intuitivas. Gosto de trabalhar com metodologias ágeis e comecei minha trajetória no suporte a sistemas bancários antes de migrar para o desenvolvimento de software. Atualmente, atuo no desenvolvimento full stack, trabalhando tanto no back‑end quanto no front‑end, sempre buscando aprimorar minhas habilidades e criar soluções cada vez melhores.</p>
+    </section>
+
+    <section class="section card">
+      <h2>Habilidades</h2>
+      <div class="chips">
+        <div class="chip">.NET</div>
+        <div class="chip">C#</div>
+        <div class="chip">Angular</div>
+        <div class="chip">TypeScript</div>
+        <div class="chip">AWS</div>
+        <div class="chip">SQL</div>
+        <div class="chip">NoSQL</div>
+        <div class="chip">Metodologias ágeis</div>
+      </div>
+    </section>
+
+    <section class="section card">
+      <h2>Projetos</h2>
+      <div id="projects" class="grid">
+        <div class="proj card">
+          <h3>Explorar projetos</h3>
+          <p>Veja meu repositório para mais trabalhos e estudos.</p>
+          <a href="https://github.com/BrendaRaveli" target="_blank" rel="noopener">Ver no GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section card">
+      <h2>Contato</h2>
+      <div class="contact">
+        <a class="btn" href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" target="_blank" rel="noopener">Conectar no LinkedIn</a>
+        <a class="btn" href="https://github.com/BrendaRaveli" target="_blank" rel="noopener">Enviar mensagem pelo GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © Brenda Raveli • Portfólio
+  </footer>
+
+  <script>
+    const container=document.getElementById('projects');
+    async function loadRepos(){
+      try{
+        const res=await fetch('https://api.github.com/users/BrendaRaveli/repos?per_page=9&sort=updated');
+        if(!res.ok) return;
+        const repos=await res.json();
+        container.innerHTML='';
+        repos.slice(0,6).forEach(r=>{
+          const el=document.createElement('div');
+          el.className='proj card';
+          const lang=r.language||'Projeto';
+          el.innerHTML=
+            '<h3>'+r.name.replace(/-/g,' ')+'</h3>'+
+            '<p>'+lang+' • '+(r.description||'Repositório público')+'</p>'+
+            '<a href="'+r.html_url+'" target="_blank" rel="noopener">Abrir no GitHub</a>';
+          container.appendChild(el);
+        });
+      }catch(e){}
+    }
+    loadRepos();
+  </script>
+</body>
+</html>

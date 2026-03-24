@@ -6,9 +6,9 @@ namespace MoneyFlow.Api.Data;
 public class MoneyFlowDbContext : DbContext
 {
     public MoneyFlowDbContext(DbContextOptions<MoneyFlowDbContext> options)
-        : base(options)
+     : base(options)
     {
     }
 
-    public DbSet<Category> Categories { get; set; } = null!;
+    public DbSet<Category> Categories { get; set; }
 }

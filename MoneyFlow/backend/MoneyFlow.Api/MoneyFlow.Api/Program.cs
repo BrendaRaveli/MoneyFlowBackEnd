@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MoneyFlow.Api.Data;
+using MoneyFlow.Api.Repositories;
+using MoneyFlow.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,10 @@ builder.Services.AddSwaggerGen();
 // Configure Database
 builder.Services.AddDbContext<MoneyFlowDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Dependency Injection (NOVO)
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 

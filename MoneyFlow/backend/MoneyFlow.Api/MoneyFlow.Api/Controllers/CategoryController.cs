@@ -5,7 +5,7 @@ using MoneyFlow.Api.Services;
 namespace MoneyFlow.Api.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/categories")]
 public class CategoryController : ControllerBase
 {
     private readonly ICategoryService _service;
@@ -26,7 +26,12 @@ public class CategoryController : ControllerBase
     public async Task<ActionResult<CategoryResponseDto>> GetById(int id)
     {
         var category = await _service.GetByIdAsync(id);
-        if (category == null) return NotFound();
+
+        if (category == null)
+        {
+            return NotFound();
+        }
+
         return Ok(category);
     }
 

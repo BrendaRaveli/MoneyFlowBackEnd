@@ -1,6 +1,7 @@
 using MoneyFlow.Api.Dtos.Categories;
 using MoneyFlow.Api.Entities;
 using MoneyFlow.Api.Repositories;
+using MoneyFlow.Api.Exceptions;
 
 namespace MoneyFlow.Api.Services;
 
@@ -55,15 +56,24 @@ public class CategoryService : ICategoryService
         };
     }
 
-    public async Task UpdateAsync(int id, UpdateCategoryDto updateDto)
+    public async Task<CategoryResponseDto> UpdateAsync(int id, UpdateCategoryDto dto)
     {
         var category = await _repository.GetByIdAsync(id);
-        if (category != null)
+
+        if (category == null)
+            throw new NotFoundException("Categoria não encontrada.");
+
+        category.Name = dto.Name;
+        category.Type = dto.Type;
+
+        await _repository.UpdateAsync(category);
+
+        return new CategoryResponseDto
         {
-            category.Name = updateDto.Name;
-            category.Type = updateDto.Type;
-            await _repository.UpdateAsync(category);
-        }
+            Id = category.Id,
+            Name = category.Name,
+            Type = category.Type
+        };
     }
 
     public async Task DeleteAsync(int id)

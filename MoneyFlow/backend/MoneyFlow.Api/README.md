@@ -1,7 +1,7 @@
 # 💰 MoneyFlow - Sistema de Gestão Financeira
 
-## 🎯 1. Objetivo
-O **MoneyFlow** é um sistema de controle financeiro pessoal desenvolvido para ajudar no rastreamento de despesas e receitas de forma organizada. O foco principal deste projeto é servir como uma base técnica sólida em .NET, priorizando a clareza do código e a separação de responsabilidades.
+## 1. Objetivo
+API para controle financeiro pessoal com foco em arquitetura limpa e didática.
 
 ## 🚀 2. Tecnologias Utilizadas
 - **.NET 8.0**: Plataforma principal para o desenvolvimento da Web API.
@@ -19,13 +19,8 @@ O projeto segue uma **Arquitetura em Camadas** simples, o que facilita o aprendi
 - **Entities**: Representação fiel das tabelas do banco de dados no código C#.
 - **Data (DbContext)**: O "coração" da integração com o banco de dados via EF Core.
 
-## ✅ 4. Funcionalidades Atuais
-- **Gestão de Categorias**:
-  - Cadastro de novas categorias (ex: Alimentação, Lazer, Salário).
-  - Listagem de todas as categorias.
-  - Consulta de categoria por ID.
-  - Atualização de dados da categoria.
-  - Exclusão de categorias.
+## 4. Funcionalidades
+- CRUD completo de Categorias (Receitas/Despesas).
 
 ## 🔗 5. Endpoints Principais
 | Método | Endpoint | Descrição |

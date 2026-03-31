@@ -5,7 +5,7 @@ using MoneyFlow.Api.Services;
 namespace MoneyFlow.Api.Controllers;
 
 [ApiController]
-[Route("api/category")]
+[Route("api/categories")]
 public class CategoryController : ControllerBase
 {
     private readonly ICategoryService _service;
@@ -25,12 +25,9 @@ public class CategoryController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<CategoryResponseDto>> GetById(int id)
     {
-        var category = await _service.GetByIdAsync(id);
+        if (id <= 0) return BadRequest("O ID deve ser maior que zero.");
 
-        if (category == null)
-        {
-            return NotFound();
-        }
+        var category = await _service.GetByIdAsync(id);
 
         return Ok(category);
     }
@@ -43,16 +40,22 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, UpdateCategoryDto updateDto)
+    public async Task<ActionResult<CategoryResponseDto>> Update(int id, UpdateCategoryDto updateDto)
     {
-        await _service.UpdateAsync(id, updateDto);
-        return NoContent();
+        if (id <= 0) return BadRequest("O ID deve ser maior que zero.");
+
+        var category = await _service.UpdateAsync(id, updateDto);
+        
+        return Ok(category);
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
+        if (id <= 0) return BadRequest("O ID deve ser maior que zero.");
+
         await _service.DeleteAsync(id);
+        
         return NoContent();
     }
 }

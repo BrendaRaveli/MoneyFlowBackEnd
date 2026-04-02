@@ -6,6 +6,17 @@ using MoneyFlow.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configuração de CORS (NOVO)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") // URL padrão do Angular
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -21,10 +32,12 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 
-// 1. O Middleware de erro deve ser o primeiro do pipeline
+// Ativar CORS (NOVO)
+app.UseCors("AllowAngular");
+
+// O Middleware de erro deve ser o primeiro do pipeline
 app.UseMiddleware<GlobalExceptionMiddleware>();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -32,9 +45,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

@@ -18,9 +18,9 @@ public class CategoryRepository : ICategoryRepository
         return await _context.Categories.ToListAsync();
     }
 
-    public async Task<Category?> GetByIdAsync(int id)
+    public async Task<Category?> GetByIdAsync(Guid id)
     {
-    return await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+        return await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
     }
 
     public async Task CreateAsync(Category category)
@@ -35,7 +35,7 @@ public class CategoryRepository : ICategoryRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(Guid id)
     {
         var category = await GetByIdAsync(id);
         if (category != null)

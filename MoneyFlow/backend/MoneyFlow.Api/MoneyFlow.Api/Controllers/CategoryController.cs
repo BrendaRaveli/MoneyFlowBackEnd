@@ -23,39 +23,30 @@ public class CategoryController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<CategoryResponseDto>> GetById(int id)
+    public async Task<ActionResult<CategoryResponseDto>> GetById(Guid id)
     {
-        if (id <= 0) return BadRequest("O ID deve ser maior que zero.");
-
         var category = await _service.GetByIdAsync(id);
-
         return Ok(category);
     }
 
     [HttpPost]
-    public async Task<ActionResult<CategoryResponseDto>> Create(CreateCategoryDto createDto)
+    public async Task<ActionResult<CategoryResponseDto>> Create(CategoryDto dto)
     {
-        var category = await _service.CreateAsync(createDto);
-        return Ok(category);
+        var category = await _service.CreateAsync(dto);
+        return CreatedAtAction(nameof(GetById), new { id = category.Id }, category);
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<CategoryResponseDto>> Update(int id, UpdateCategoryDto updateDto)
+    public async Task<ActionResult<CategoryResponseDto>> Update(Guid id, CategoryDto dto)
     {
-        if (id <= 0) return BadRequest("O ID deve ser maior que zero.");
-
-        var category = await _service.UpdateAsync(id, updateDto);
-        
+        var category = await _service.UpdateAsync(id, dto);
         return Ok(category);
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete(Guid id)
     {
-        if (id <= 0) return BadRequest("O ID deve ser maior que zero.");
-
         await _service.DeleteAsync(id);
-        
         return NoContent();
     }
 }

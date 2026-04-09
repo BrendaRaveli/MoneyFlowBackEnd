@@ -20,7 +20,7 @@ public class CategoryService : ICategoryService
         return categories.Select(c => MapToResponseDto(c));
     }
 
-    public async Task<CategoryResponseDto> GetByIdAsync(int id)
+    public async Task<CategoryResponseDto> GetByIdAsync(Guid id)
     {
         var category = await _repository.GetByIdAsync(id);
         
@@ -30,14 +30,14 @@ public class CategoryService : ICategoryService
         return MapToResponseDto(category);
     }
 
-    public async Task<CategoryResponseDto> CreateAsync(CreateCategoryDto createDto)
+    public async Task<CategoryResponseDto> CreateAsync(CategoryDto dto)
     {
         var category = new Category
         {
-            Name = createDto.Name,
-            Type = createDto.Type,
-            UserId = "user-123", // Placeholder para futura implementação de Auth
-            CreatedAt = DateTime.UtcNow
+            Id = Guid.NewGuid(),
+            Name = dto.Name,
+            Type = dto.Type,
+            UserId = "user-123" // Placeholder para futura implementação de Auth
         };
 
         await _repository.CreateAsync(category);
@@ -45,7 +45,7 @@ public class CategoryService : ICategoryService
         return MapToResponseDto(category);
     }
 
-    public async Task<CategoryResponseDto> UpdateAsync(int id, UpdateCategoryDto dto)
+    public async Task<CategoryResponseDto> UpdateAsync(Guid id, CategoryDto dto)
     {
         var category = await _repository.GetByIdAsync(id);
 
@@ -54,14 +54,13 @@ public class CategoryService : ICategoryService
 
         category.Name = dto.Name;
         category.Type = dto.Type;
-        category.UpdatedAt = DateTime.UtcNow;
 
         await _repository.UpdateAsync(category);
 
         return MapToResponseDto(category);
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(Guid id)
     {
         var category = await _repository.GetByIdAsync(id);
 
@@ -77,9 +76,7 @@ public class CategoryService : ICategoryService
         {
             Id = category.Id,
             Name = category.Name,
-            Type = category.Type,
-            UserId = category.UserId,
-            CreatedAt = category.CreatedAt
+            Type = category.Type
         };
     }
 }

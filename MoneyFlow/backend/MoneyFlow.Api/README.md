@@ -1,4 +1,9 @@
+```markdown
 # 💰 MoneyFlow - API de Gestão Financeira
+
+> 🚧 **Estado do Projeto: Em Desenvolvimento (Work in Progress)** 🚧
+
+> *Esta API está sendo construída e aprimorada gradativamente.*
 
 ## 1. Objetivo
 API robusta para controle financeiro pessoal, focada em boas práticas, arquitetura limpa e alta manutenibilidade.
@@ -9,19 +14,19 @@ API robusta para controle financeiro pessoal, focada em boas práticas, arquitet
 - **Testes**: xUnit & Moq
 - **Documentação**: Swagger/OpenAPI
 
-## 3. Arquitetura
+## 3. Arquitetura e Padrões
 O projeto utiliza uma **Arquitetura em Camadas** com separação clara de responsabilidades:
-- **Controllers**: Validação de entrada HTTP e roteamento.
-- **Services**: Lógica de negócio e orquestração.
-- **Repositories**: Acesso a dados e persistência.
-- **Middlewares**: Tratamento global de exceções.
-- **DTOs**: Contratos de entrada e saída (usando C# Records).
+- **Controllers**: Validação de entrada HTTP e roteamento (sem regras de negócio).
+- **Services (Service Layer)**: Lógica de negócio e orquestração.
+- **Repositories (Repository Pattern)**: Abstração do acesso a dados e persistência via EF Core.
+- **Middlewares**: Tratamento global de exceções (Global Exception Handling).
+- **DTOs**: Contratos de entrada e saída, evitando exposição direta das entidades do banco.
 
-## 4. Funcionalidades
+## 4. Funcionalidades Atuais
 - CRUD completo de Categorias (Receitas/Despesas).
-- Tratamento de erros centralizado (Global Exception Handling).
-- Configuração de CORS para integração com Frontend.
-- Cobertura de Testes Unitários na camada de Service.
+- Tratamento de erros centralizado padronizado.
+- Configuração de CORS para integração com o Frontend Angular.
+- Cobertura de Testes Unitários isolados na camada de Service.
 
 ## 5. Endpoints Principais (`/api/categories`)
 | Método | Endpoint | Descrição |
@@ -42,16 +47,3 @@ dotnet test
 
 # 3. Executar a API
 dotnet run --project MoneyFlow.Api
-```
-Acesse `https://localhost:7173/swagger` para a documentação interativa.
-
-## 7. Próximos Passos
-- Implementar fluxo de Transações.
-- Autenticação e Autorização (JWT).
-- Integração final com Frontend Angular.
-
-## 8. Aprendizados Consolidados
-- **Injeção de Dependência**: Ciclo de vida Scoped.
-- **Middleware**: Interceptação global de erros.
-- **Testing**: Isolamento de dependências com Mocks.
-- **REST**: Padronização de retornos (200, 201, 204, 404).

@@ -1,4 +1,5 @@
 ```markdown
+# GEMINI.md — MoneyFlow backend
 # 💰 MoneyFlow - API de Gestão Financeira
 
 > 🚧 **Estado do Projeto: Em Desenvolvimento (Work in Progress)** 🚧

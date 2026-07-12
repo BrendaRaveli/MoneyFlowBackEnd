@@ -4,7 +4,8 @@
 
 > 🚧 **Estado do Projeto: Em Desenvolvimento (Work in Progress)** 🚧
 
-> *Esta API está sendo construída e aprimorada gradativamente.*
+> *Esta API está sendo construída e aprimorada gradativamente.* 
+
 
 ## 1. Objetivo
 API robusta para controle financeiro pessoal, focada em boas práticas, arquitetura limpa e alta manutenibilidade.
